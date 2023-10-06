@@ -14,7 +14,6 @@ def random_predict_by_square_division(number: int = 1) -> int:
     Args:
     ----
         number (int, optional): Загаданное число. Defaults to 1.
-        seed (int, optional): Seed для numpy.
 
     Returns:
     -------
@@ -43,7 +42,6 @@ def score_game(random_predict: Callable[[int], int]) -> int:
     Args:
     ----
         random_predict (RandomPredictCallable): функция угадывания
-        seed (int, optional): Seed для numpy.
 
     Returns:
     -------
