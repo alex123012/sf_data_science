@@ -49,10 +49,10 @@ def score_game(random_predict: Callable[[int], int]) -> int:
     -------
         int: среднее количество попыток
     """  # noqa: RUF002
-    # np.random.seed(1)  # фиксируем сид для воспроизводимости
-    random_array = np.random.default_rng().integers(1, 101, size=1000)  # загадали список чисел
+    # загадали список чисел
+    random_array = np.random.default_rng().integers(1, 101, size=1000)
 
-    count_ls = [random_predict(number=number) for number in random_array]
+    count_ls = [random_predict(number) for number in random_array]
 
     score = int(np.mean(count_ls))
     print(f"Ваш алгоритм угадывает число в среднем за:{score} попыток")  # noqa: T201
