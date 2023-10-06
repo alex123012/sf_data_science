@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11", "3.12"]
+        linter: ["mypy", "ruff", "pylint"]
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -22,11 +23,5 @@ jobs:
         python -m pip install --upgrade pip poetry
         poetry install
 
-    - name: Pylint
-      run: poetry run pylint $(git ls-files '*.py')
-
-    - name: Mypy
-      run: mypy $(git ls-files '*.py')
-
-    - name: Ruff
-      run: ruff $(git ls-files '*.py')
+    - name: ${{ matrix.linter }}
+      run: poetry run ${{ matrix.linter }} $(git ls-files '*.py')
